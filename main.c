@@ -23,9 +23,15 @@ printf("C File I/O - System Calls\n");
   int result = 1;
   while(result != 0)
     {
-      char ch;
-      result = read(fd, &ch, 1)git ;
-      printf("result: %d, ch: 0x%02x %c\n", result, ch, ch);
+      //char ch;
+      char buf[100];
+      result = read(fd, buf, sizeof(buf));
+      //printf("result: %d, ch: 0x%02x %c\n", result, ch, ch);
+      printf("result: %d\n", result);
+      for (int i = 0; i < result; i++)
+        {
+          printf("buf[%d]: 0x%02x %c\n", i, buf[i], buf[i]);
+        }
     }
 
   close(fd);
